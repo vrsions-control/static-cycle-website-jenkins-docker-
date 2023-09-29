@@ -15,16 +15,14 @@ pipeline {
             steps{
                 sh "docker build -t $registry:${BUILD_NUMBER} ."
             }
-        }
-        
-        post {
-            success {
-                mail to: "venkatreddybandi1999@gmail.com"
-                subject: "status of image"
-                body: "Image successfully built"
+            post {
+                success {
+                    mail to: "venkatreddybandi1999@gmail.com"
+                    subject: "status of image"
+                    body: "Image successfully built"
+                }
             }
         }
-       
                 
         // Uploading Docker image into ECR
         stage("Uploading to ECR"){
@@ -34,13 +32,13 @@ pipeline {
             }
         }
         
-        post {
-            success {
-                mail to: "venkatreddybandi1999@gmail.com"
-                subject: "status of image"
-                body: "Image successfully deployed to ECR"
-            }
-        }
+        // post {
+        //     success {
+        //         mail to: "venkatreddybandi1999@gmail.com"
+        //         subject: "status of image"
+        //         body: "Image successfully deployed to ECR"
+        //     }
+        // }
         
         // stopping previous container and removing
         stage("Stopping previous container"){
@@ -57,13 +55,13 @@ pipeline {
                 sh "docker run -itd --name website-cont -p 8081:80 $registry:${BUILD_NUMBER}"
             }
         }
-        post {
-            success {
-                mail to: "venkatreddybandi1999@gmail.com"
-                subject: "Status of Container"
-                body: "Image successfully built and container created , you can access with port 8081"
-            }
-        }
+        // post {
+        //     success {
+        //         mail to: "venkatreddybandi1999@gmail.com"
+        //         subject: "Status of Container"
+        //         body: "Image successfully built and container created , you can access with port 8081"
+        //     }
+        // }
     }
 }
 // pipeline {

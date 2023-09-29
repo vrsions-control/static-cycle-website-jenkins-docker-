@@ -17,9 +17,10 @@ pipeline {
             }
             post {
                 success {
-                    mail to: "venkatreddybandi1999@gmail.com"
-                    subject: "status of image"
-                    body: "Image successfully built"
+                    echo "hello"
+                    // mail to: "venkatreddybandi1999@gmail.com"
+                    // subject: "status of image"
+                    // body: "Image successfully built"
                 }
             }
         }

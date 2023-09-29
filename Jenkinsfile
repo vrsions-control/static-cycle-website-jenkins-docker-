@@ -28,7 +28,7 @@ pipeline {
         // stopping previous container and removing
         stage("Stopping previous container"){
             steps{
-                sh "docker ps -f name=website-cont -q |xargs --no-run-if-empty docker container kill"
+                sh "docker ps -f name=website-cont -q |xargs --no-run-if-empty docker container stop"
                 sh "docker ls -a -f namewebsite-cont -q | xargs -r docker container rm"
             }
         }

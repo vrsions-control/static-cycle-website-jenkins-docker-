@@ -17,7 +17,7 @@ pipeline {
             }
         }
         
-         post {
+        post {
             success {
                 mail to: "venkatreddybandi1999@gmail.com"
                 subject: "status of image"
@@ -34,7 +34,7 @@ pipeline {
             }
         }
         
-         post {
+        post {
             success {
                 mail to: "venkatreddybandi1999@gmail.com"
                 subject: "status of image"
@@ -57,7 +57,7 @@ pipeline {
                 sh "docker run -itd --name website-cont -p 8081:80 $registry:${BUILD_NUMBER}"
             }
         }
-         post {
+        post {
             success {
                 mail to: "venkatreddybandi1999@gmail.com"
                 subject: "Status of Container"
